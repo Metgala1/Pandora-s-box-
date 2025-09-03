@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Navbar.module.css";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
     const [user, setUser] = useState(true)
@@ -17,11 +18,11 @@ const Navbar = () => {
 
       <div className={styles.controll}>
         {user ? (
-          <button onClick={() => setUser(!user)} className={`${styles.logoutBtn} ${styles.btn}`}>Logout</button>
+          <button onClick={() => setUser(!user)} className={`${styles.logoutBtn} ${styles.btn}`}><FaSignOutAlt /> Logout</button>
         ) : (
           <div className={styles.loginRegDiv}>
-            <button className={`${styles.loginBtn} ${styles.btn}`}>Login</button>
-            <button className={`${styles.registerBtn} ${styles.btn}`}>Register</button>
+            <button className={`${styles.loginBtn} `}>Login</button>
+            <button className={`${styles.registerBtn} `}>Register</button>
           </div>
         )}
       </div>

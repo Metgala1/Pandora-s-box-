@@ -76,6 +76,20 @@
     text-decoration: none;
 }
 
+.loginBtn, .registerBtn{
+    background: none;
+    border: none;
+    color: var(--muted);
+}
+
+.loginBtn:hover{
+    color: white;
+}
+
+.registerBtn:hover{
+    color: white;
+}
+
 .logoutBtn{
     background-color: var(--danger);
     border-color:  color-mix(in oklab, var(--text), transparent 88%);
@@ -102,6 +116,6 @@
     }
 
     .navBar .btn{
-        width: 80px;
+        width: 100px;
     }
 }

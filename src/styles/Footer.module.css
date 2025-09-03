@@ -1,0 +1,59 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #11141a;
+  --panel-2: #141824;
+  --text: #e6e9ef;
+  --muted: #9aa4b2;
+  --brand: #0d4f55;
+  --brand-2: #887146;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --ring: rgba(110, 231, 242, 0.4);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.footer{
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+     position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    background:  color-mix(in oklab, var(--panel), transparent 25%);
+    border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 92%);
+    width: 100%;
+    height: 10vh;
+    padding: 0rem 4rem;
+}
+
+.icons{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon{
+    font-size: xx-large;
+}
+
+@media (max-width: 768px) {
+    .icons {
+        width: 100%;
+    }
+    .footer{
+        padding: 0px 2rem;
+    }
+    .footer{
+        background-color: none;
+    }
+    .icon{
+        color: white;
+    }
+}

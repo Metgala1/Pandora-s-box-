@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/Footer.module.css';
-import { FaHouseUser, FaImage, FaVideo, FaHeadphones, FaComment, FaUser } from 'react-icons/fa';
+import { FaHouseUser, FaRegImage, FaVideo, FaHeadphones, FaRegComment, FaRegUser } from 'react-icons/fa';
 
 const Footer = () => {
     const [user, setUser] = useState(true)
@@ -9,11 +9,11 @@ const Footer = () => {
             {user ? (
              <div className={styles.icons}>
             <a href="/"><FaHouseUser className={styles.icon}/></a>
-            <a href=""><FaImage className={styles.icon}/></a>
+            <a href=""><FaRegImage className={styles.icon}/></a>
             <a href=""><FaVideo className={styles.icon}/></a>
             <a href=""><FaHeadphones className={styles.icon}/></a>
-            <a href=""><FaComment className={styles.icon}/></a>
-            <a href=""><FaUser className={styles.icon}/></a>
+            <a href=""><FaRegComment className={styles.icon}/></a>
+            <a href=""><FaRegUser className={styles.icon}/></a>
             </div>
             ) : (
                 <p> © {new Date().getFullYear()}  Pandora’s Box By ATAGWE ROGER — secure, simple storage.</p>

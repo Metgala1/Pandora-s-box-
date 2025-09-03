@@ -1,0 +1,88 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #11141a;
+  --panel-2: #141824;
+  --text: #e6e9ef;
+  --muted: #9aa4b2;
+  --brand: #0d4f55;
+  --brand-2: #887146;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --ring: rgba(110, 231, 242, 0.4);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.navBar{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+     position: fixed;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    background:  color-mix(in oklab, var(--panel), transparent 25%);
+    border-bottom: 1px solid color-mix(in oklab, var(--text), transparent 92%);
+    width: 100%;
+    height: 8vh;
+}
+
+* {
+
+}
+
+.brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    
+    
+}
+
+.brand p{
+    font-size: x-large;
+    text-decoration: none;
+    
+}
+
+.gradientText {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+  color: transparent; 
+}
+
+.btn {
+    appearance: none;
+    border: 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: 
+ color-mix(in oklab, var(--panel-2), transparent 0%);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+    border: 1px solid
+ color-mix(in oklab, var(--text), transparent 88%);
+    transition: transform 0.05s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+}
+
+.logoutBtn{
+    background-color: var(--danger);
+    border-color:  color-mix(in oklab, var(--text), transparent 88%);
+    border-radius: 5px;
+    padding: 10px 14px;
+}
+
+.loginRegDiv{
+    display: flex;
+    gap: 1rem;
+}
+

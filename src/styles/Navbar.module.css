@@ -30,8 +30,10 @@
     height: 8vh;
 }
 
-* {
-
+.navBar .logo{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
 }
 
 .brand{
@@ -86,3 +88,20 @@
     gap: 1rem;
 }
 
+@media (max-width: 768px) {
+    .navBar{
+        padding: 10px;
+    }
+    .navBar .gradientText{
+        font-size: large;
+        font-weight: 700;
+    }
+    .navBar .logo{
+        width: 45px;
+        height: 45px;
+    }
+
+    .navBar .btn{
+        width: 80px;
+    }
+}

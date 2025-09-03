@@ -10,7 +10,7 @@ const Navbar = () => {
             <img
               src="logo.png"
               alt="Pandora’s Box Logo"
-              style={{ width: "60px", height: "60px", borderRadius: "10px" }}
+              className={styles.logo}
             />
             <p className={styles.gradientText}>Pandora’s Box</p>
           </a>

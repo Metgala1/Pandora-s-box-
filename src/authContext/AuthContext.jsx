@@ -1,4 +1,3 @@
-
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,13 +7,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
-  const [message, setMessage] = useState('')
 
-  const BASE_URL = import.meta.env.VITE_BACKEND_URL
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
- 
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -36,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      return { success: true };
+      return { success: true, user: data.user };
     } catch (err) {
       console.error(err);
       return {
@@ -46,27 +41,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-const signup = async (name, email, password) => {
-  try {
-    const { data } = await axios.post(`${BASE_URL}/signup`, {
-      name,
-      email,
-      password,
-    });
+  const signup = async (name, email, password) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/signup`, {
+        name,
+        email,
+        password,
+      });
 
-    setSuccess(true);
-    setMessage(data?.message || "Signup successful");
-    setError(null);
+      return {
+        success: true,
+        message: data?.message || "Signup successful",
+      };
+    } catch (err) {
+      console.error(err);
 
-  } catch (err) {
-    console.error(err);
-    setError(err.response?.data?.message || "Signup failed");
-    setSuccess(false);
-    setMessage("");
-  }
-};
-
-
+      return {
+        success: false,
+        message: err.response?.data?.message || "Signup failed",
+      };
+    }
+  };
 
   const logout = () => {
     setUser(null);
@@ -77,11 +72,7 @@ const signup = async (name, email, password) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ user, token, login, signup, logout, setLoading, 
-     loading, setError, error, success, setSuccess,
-     message, setMessage }}
-    >
+    <AuthContext.Provider value={{ user, token, login, signup, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

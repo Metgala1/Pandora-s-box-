@@ -13,49 +13,51 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const { signup, loading, setLoading, setError, error, success, message } =
-    useContext(AuthContext);
-
-  function handleInput(e) {
+  // Handle input changes
+  const handleInput = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  async function handleSubmit(e) {
+  // Handle form submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setError(null);
+    setSuccess(null);
+    setIsLoading(true);
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
-      setLoading(false);
+      setError("Passwords do not match.");
+      setIsLoading(false);
+      setTimeout(() => setError(null), 3000);
       return;
     }
 
-    try {
-      await signup(formData.name, formData.email, formData.password);
+    const result = await signup(formData.name, formData.email, formData.password);
 
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } catch {
-      // errors are already handled in signup
-    } finally {
-      setLoading(false);
+    if (result.success) {
+      setIsLoading(false)
+      setSuccess(result.message);
+      setTimeout(() => navigate("/"), 2000);
+    } else {
+      setError(result.message || "Registration failed.");
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className={styles.authSection}>
       <div className={styles.formWrapper}>
         <h1>Sign Up</h1>
         <p className={styles.tagline}>
-          Create your Pandora’s Box account to securely store and manage your
-          files.
+          Create your Pandora’s Box account to securely store and manage your files.
         </p>
 
         <form onSubmit={handleSubmit} className={styles.card}>
@@ -72,7 +74,6 @@ const SignUp = () => {
               required
             />
           </div>
-
 
           <div className={styles.field}>
             <label className={styles.mute}>Email Address</label>
@@ -117,9 +118,9 @@ const SignUp = () => {
             <button
               className={`${styles.btn} ${styles.btnPrimary}`}
               type="submit"
-              disabled={loading}
+              disabled={isLoading}
             >
-              <FaUserPlus /> {loading ? "Signing Up..." : "Sign Up"}
+              <FaUserPlus /> {isLoading ? "Signing Up..." : "Sign Up"}
             </button>
             <a className={styles.btn} href="/login">
               <FaRightToBracket /> Login
@@ -127,22 +128,16 @@ const SignUp = () => {
           </div>
         </form>
 
-        {success && <p className={styles.success}>{message}</p>}
+        {success && <p className={styles.success}>{success}</p>}
         {error && <p className={styles.error}>{error}</p>}
-        {loading && <LoadingDots />}
+        {isLoading && <LoadingDots />}
       </div>
-
 
       <p className={styles.disclaimer}>
         By signing up, you agree to our{" "}
-        <a href="#" className={styles.signUp}>
-          Terms of Service
-        </a>{" "}
+        <a href="#" className={styles.signUp}>Terms of Service</a>{" "}
         and{" "}
-        <a href="#" className={styles.signUp}>
-          Privacy Policy
-        </a>
-        .
+        <a href="#" className={styles.signUp}>Privacy Policy</a>.
       </p>
     </div>
   );

@@ -54,10 +54,10 @@ const Main = () => {
           <p>Manage, preview, and share your files instantly.</p>
           <div className={styles.quickAction}>
             <a className={`${styles.btn} ${styles.uploadBtn}`} href="/upload">
-              <FaUpload /> Upload New File
+              <FaUpload /> Upload File
             </a>
             <a className={`${styles.btn} ${styles.loginBtn}`} href="/files">
-              <FaFolderOpen /> View My Files
+              <FaFolderOpen /> View Files
             </a>
           </div>
         </section>
@@ -68,22 +68,22 @@ const Main = () => {
         {!user && <h2>Why Pandora’s Box?</h2>}
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
-            <FaLock size={32} />
+            <FaLock className={styles.icon} size={32} />
             <h3>Secure</h3>
             <p>Your files are encrypted and safe with us.</p>
           </div>
           <div className={styles.featureCard}>
-            <FaBolt size={32} />
+            <FaBolt className={styles.icon} size={32} />
             <h3>Fast</h3>
             <p>Quick uploads, previews, and downloads at your fingertips.</p>
           </div>
           <div className={styles.featureCard}>
-            <FaShareNodes size={32} />
+            <FaShareNodes className={styles.icon}size={32} />
             <h3>Share</h3>
             <p>Easily share files with friends or colleagues in one click.</p>
           </div>
           <div className={styles.featureCard}>
-            <FaMobileScreen size={32} />
+            <FaMobileScreen className={styles.icon} size={32} />
             <h3>Anywhere</h3>
             <p>Access your files on desktop, tablet, or mobile seamlessly.</p>
           </div>

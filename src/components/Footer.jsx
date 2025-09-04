@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className={styles.footer}>
             {user ? (
              <div className={styles.icons}>
-            <a href="/"><FaHouseUser className={styles.icon}/></a>
+            <a href="/"><FaHouseUser className={`${styles.icon} ${styles.active}`}/></a>
             <a href=""><FaRegImage className={styles.icon}/></a>
             <a href=""><FaVideo className={styles.icon}/></a>
             <a href=""><FaHeadphones className={styles.icon}/></a>

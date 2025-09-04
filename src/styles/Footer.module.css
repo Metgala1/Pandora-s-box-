@@ -37,11 +37,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    
 
 }
 
 .icon{
     font-size: xx-large;
+    color: var(--muted);
+}
+
+.active{
+    color: white;
 }
 
 @media (max-width: 768px) {
@@ -51,10 +58,14 @@
     .footer{
         padding: 0px 2rem;
     }
-    .footer{
+    .footer {
         background-color: none;
     }
     .icon{
-        color: white;
+       color: var(--muted);
     }
+    .active{
+    color: white;
+    }
+
 }

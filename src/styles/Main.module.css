@@ -182,9 +182,14 @@
     }
     .welcomeSection{
         padding: 0.2rem 1rem;
+        margin-bottom: 10px;
+    }
+    .features{
+        padding: 0px 0.6rem;
     }
     .featureCard{
         border-radius: 0px;
+
     }
 
 

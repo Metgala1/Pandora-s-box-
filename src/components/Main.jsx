@@ -92,7 +92,7 @@ const Main = () => {
 
       {/* Call to Action Section */}
       <section className={styles.cta}>
-        <h2 style={{ color: "black" }}>Start Storing Smarter Today</h2>
+        <h2 style={{ color: "white" }}>Start Storing Smarter Today</h2>
         <p>Pandora’s Box makes managing your files simple and professional.</p>
         {!user ? (
           <a className={`${styles.btn} ${styles.signupBtn}`} href="/register">

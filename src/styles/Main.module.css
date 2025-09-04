@@ -1,21 +1,49 @@
-.mainContainer {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+:root {
+  --bg: #0b0d10;
+  --panel: #11141a;
+  --panel-2: #141824;
+  --text: #e6e9ef;
+  --muted: #9aa4b2;
+  --brand: #0d4f55;
+  --brand-2: #887146;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --ring: rgba(110, 231, 242, 0.4);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Hero Section */
+.mainContainer {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
+}
+
 .heroSection {
   text-align: center;
-  padding: 4rem 2rem;
-  border-radius: 1rem;
-  margin-bottom: 3rem;
+  padding: 5rem 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: var(--panel);
+  box-shadow: var(--shadow);
+
+}
+
+.heroContent p{
+    color: black;
 }
 
 .heroContent h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+    font-size: clamp(36px, 4vw, 48px);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .btn {
@@ -117,7 +145,7 @@
   padding: 1.5rem;
   border-radius: 0.75rem;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px #333; 
 }
 
 .featureCard h3 {
@@ -140,4 +168,24 @@
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   color: #444;
+}
+
+@media (max-width: 768px) {
+    .mainContainer{
+        width: 100%;
+        margin-top: 8vh;
+        margin-bottom: 10vh;
+    }
+    .heroSection{
+        padding-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .welcomeSection{
+        padding: 0.2rem 1rem;
+    }
+    .featureCard{
+        border-radius: 0px;
+    }
+
+
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/Navbar.module.css";
 import { FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [user, setUser] = useState(true)
@@ -21,8 +22,8 @@ const Navbar = () => {
           <button onClick={() => setUser(!user)} className={`${styles.logoutBtn} ${styles.btn}`}><FaSignOutAlt /> Logout</button>
         ) : (
           <div className={styles.loginRegDiv}>
-            <button className={`${styles.loginBtn} `}>Login</button>
-            <button className={`${styles.registerBtn} `}>Register</button>
+           <Link to={"login"}> <button className={`${styles.loginBtn} `}>Login</button></Link>
+           <Link to={'signup'}><button className={`${styles.registerBtn} `}>Register</button></Link>
           </div>
         )}
       </div>

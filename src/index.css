@@ -54,6 +54,10 @@ body {
 #root{
   width: 100vw;
   height: 100vh;
+  background: radial-gradient(1200px 700px at 10% -10%, rgba(110, 231, 242, 0.15), transparent 80%),
+              radial-gradient(1200px 700px at 110% -20%, rgba(167, 139, 250, 0.15), transparent 80%),
+              var(--bg);
+  transition: background 0.3s ease, color 0.3s ease;
 
 }
 

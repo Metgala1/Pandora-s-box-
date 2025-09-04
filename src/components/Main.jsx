@@ -13,12 +13,13 @@ import {
   FaArrowRight,
 } from "react-icons/fa6";
 
+import { Link } from "react-router-dom";
+
 const Main = () => {
   let user = { name: "Roger" };
 
   return (
     <main className={styles.mainContainer}>
-      {/* Hero Section */}
       <header className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1>
@@ -36,9 +37,11 @@ const Main = () => {
           <h2>Get Started</h2>
           <p>Create a free account and start managing your files today.</p>
           <div className={styles.authBtn}>
+            <Link to={"signup"}>
             <a className={`${styles.btn} ${styles.signupBtn}`} href="/register">
               <FaUserPlus /> Sign Up
             </a>
+            </Link>
             <a className={`${styles.btn} ${styles.loginBtn}`} href="/login">
               <FaRightToBracket /> Login
             </a>

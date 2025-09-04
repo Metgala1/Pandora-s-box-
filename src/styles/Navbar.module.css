@@ -80,6 +80,7 @@
     background: none;
     border: none;
     color: var(--muted);
+    font-size: large;
 }
 
 .loginBtn:hover{
@@ -117,5 +118,8 @@
 
     .navBar .btn{
         width: 100px;
+    }
+    .loginBtn, .registerBtn{
+        font-size: medium;
     }
 }

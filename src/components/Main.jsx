@@ -31,7 +31,6 @@ const Main = () => {
         </div>
       </header>
 
-      {/* Auth Section */}
       {!user ? (
         <section className={styles.authSection}>
           <h2>Get Started</h2>
@@ -42,13 +41,14 @@ const Main = () => {
               <FaUserPlus /> Sign Up
             </a>
             </Link>
+            <Link to={"login"}>
             <a className={`${styles.btn} ${styles.loginBtn}`} href="/login">
               <FaRightToBracket /> Login
             </a>
+            </Link>
           </div>
         </section>
       ) : (
-        /* Welcome Section */
         <section className={styles.welcomeSection}>
           <h2>
             Welcome back, {user.name}{" "}
@@ -66,7 +66,6 @@ const Main = () => {
         </section>
       )}
 
-      {/* Features Section */}
       <section className={styles.features}>
         {!user && <h2>Why Pandora’s Box?</h2>}
         <div className={styles.featureGrid}>
@@ -93,7 +92,6 @@ const Main = () => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className={styles.cta}>
         <h2 style={{ color: "white" }}>Start Storing Smarter Today</h2>
         <p>Pandora’s Box makes managing your files simple and professional.</p>

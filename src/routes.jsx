@@ -2,6 +2,7 @@ import Signup from "./components/Signup"
 import App from "./App"
 import Login from "./components/Login"
 import FileManager from "./components/File"
+import FileUpload from "./components/FileUpload"
 
 const routes = [
     {
@@ -18,6 +19,11 @@ const routes = [
     {
      path: "files",
      element: <FileManager />
+    },
+    {
+     path: 'upload',
+     element: <FileUpload />
+
     }
 ]
 

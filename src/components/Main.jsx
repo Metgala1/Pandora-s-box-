@@ -59,9 +59,11 @@ const Main = () => {
           </h2>
           <p>Manage, preview, and share your files instantly.</p>
           <div className={styles.quickAction}>
+            <Link to={"upload"}>
             <a className={`${styles.btn} ${styles.uploadBtn}`} href="/upload">
               <FaUpload /> Upload File
             </a>
+            </Link>
             <Link to={"files"}>
             <a className={`${styles.btn} ${styles.loginBtn}`}>
               <FaFolderOpen /> View Files

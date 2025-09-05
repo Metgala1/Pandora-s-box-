@@ -14,24 +14,32 @@ export const FileProvider = ({ children }) => {
 
   const BASE_URL = import.meta.env.VITE_BACKEND_URL
 
-  const uploadFile = async (formData) => {
-    try {
-      setLoading(true);
-      setError(null);
+const uploadFile = async (formData, onProgress) => {
+  try {
+    setLoading(true);
+    setError(null);
 
-      const { data } = await axios.post(`${BASE_URL}/files/upload`, formData, {
-        withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+    const { data } = await axios.post(`${BASE_URL}/upload`, formData, {
+      // The onUploadProgress callback gives us the progress event
+      onUploadProgress: (progressEvent) => {
+        // We calculate the percentage and call the onProgress callback
+        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+        onProgress(percentCompleted);
+      },
+      withCredentials: true,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
 
-      setFiles((prev) => [data.file, ...prev]);
-      return data.file;
-    } catch (err) {
-      setError(err.response?.data?.message || "Upload failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setFiles((prev) => [data.file, ...prev]);
+    return data.file;
+  } catch (err) {
+    setError(err.response?.data?.message || "Upload failed");
+    // Also reset progress to 0 on error
+    onProgress(0);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const fetchFiles = useCallback(async () => {
     try {

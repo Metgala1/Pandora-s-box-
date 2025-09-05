@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/Footer.module.css";
 import {
   FaHouseUser,
@@ -8,62 +9,54 @@ import {
   FaRegComment,
   FaRegUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../authContext/AuthContext";
-import { useContext } from "react";
 
 const Footer = () => {
-  const {user} = useContext(AuthContext)
-  
-  const [activeIcon, setActiveIcon] = useState("/");
-
-  const handleClick = (path) => {
-    setActiveIcon(path);
-  };
+  const [user] = useState(true);
+  const location = useLocation(); // Get current route
 
   return (
     <footer className={styles.footer}>
       {user ? (
         <div className={styles.icons}>
-          <Link to="/" onClick={() => handleClick("/")}>
+          <Link to="/">
             <FaHouseUser
               className={`${styles.icon} ${
-                activeIcon === "/" ? styles.active : ""
+                location.pathname === "/" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="/images" onClick={() => handleClick("/images")}>
+          <Link to="/images">
             <FaRegImage
               className={`${styles.icon} ${
-                activeIcon === "/images" ? styles.active : ""
+                location.pathname === "/images" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="/videos" onClick={() => handleClick("/videos")}>
+          <Link to="/videos">
             <FaVideo
               className={`${styles.icon} ${
-                activeIcon === "/videos" ? styles.active : ""
+                location.pathname === "/videos" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="/audios" onClick={() => handleClick("/audios")}>
+          <Link to="/audios">
             <FaHeadphones
               className={`${styles.icon} ${
-                activeIcon === "/audios" ? styles.active : ""
+                location.pathname === "/audios" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="/comments" onClick={() => handleClick("/comments")}>
+          <Link to="/comments">
             <FaRegComment
               className={`${styles.icon} ${
-                activeIcon === "/comments" ? styles.active : ""
+                location.pathname === "/comments" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="/profile" onClick={() => handleClick("/profile")}>
+          <Link to="/profile">
             <FaRegUser
               className={`${styles.icon} ${
-                activeIcon === "/profile" ? styles.active : ""
+                location.pathname === "/profile" ? styles.active : ""
               }`}
             />
           </Link>

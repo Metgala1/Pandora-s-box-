@@ -4,6 +4,7 @@ import Login from "./components/Login"
 import FileManager from "./components/File"
 import FileUpload from "./components/FileUpload"
 import Images from "./components/Image"
+import Videos from "./components/Videos"
 
 const routes = [
     {
@@ -29,6 +30,10 @@ const routes = [
     {
       path: "images",
       element: <Images />
+    },
+    {
+        path: "videos",
+        element: <Videos />
     }
     
 ]

@@ -68,7 +68,7 @@ const uploadFile = async (formData, onProgress) => {
 
   const fetchVideos = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/files/videos`, {
+      const { data } = await axios.get(`${BASE_URL}/videos`, {
         withCredentials: true,
       });
       setVideos(data);
@@ -79,7 +79,7 @@ const uploadFile = async (formData, onProgress) => {
 
   const fetchAudios = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/files/audios`, {
+      const { data } = await axios.get(`${BASE_URL}/audios`, {
         withCredentials: true,
       });
       setAudios(data);

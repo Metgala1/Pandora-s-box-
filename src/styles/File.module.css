@@ -1,0 +1,178 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  flex: 2;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.mute {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--panel), transparent 0%),
+    color-mix(in oklab, var(--panel-2), transparent 0%)
+  );
+  border: 1px solid color-mix(in oklab, var(--text), transparent 90%);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
+}
+
+.noFiles {
+  padding: 2rem;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--panel-2), transparent 0%);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid color-mix(in oklab, var(--text), transparent 88%);
+  transition: transform 0.05s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border-color: transparent;
+  color: var(--panel);
+}
+
+.btnDanger {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  border-color: transparent;
+  color: white;
+}
+
+.filesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.fileCard {
+  background: var(--panel-2);
+  border-radius: 12px;
+  padding: 15px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fileCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.filePreview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.fileIcon {
+  font-size: 48px;
+  text-align: center;
+  padding: 40px 0;
+  background: var(--panel);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.fileInfo {
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.filename {
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.fileMeta {
+  font-size: 13px;
+  color: var(--muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.fileActions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+  .filesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .filesGrid {
+    grid-template-columns: 1fr;
+  }
+  .filePreview {
+    max-height: 150px;
+  }
+}

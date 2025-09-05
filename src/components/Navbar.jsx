@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../styles/Navbar.module.css";
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";

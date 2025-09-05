@@ -1,6 +1,7 @@
 import Signup from "./components/Signup"
 import App from "./App"
 import Login from "./components/Login"
+import FileManager from "./components/File"
 
 const routes = [
     {
@@ -13,6 +14,10 @@ const routes = [
     {
         path: "login",
         element: <Login />
+    },
+    {
+     path: "files",
+     element: <FileManager />
     }
 ]
 

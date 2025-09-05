@@ -2,9 +2,11 @@ import { useState } from "react";
 import styles from "../styles/Navbar.module.css";
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../authContext/AuthContext";
+import { useContext } from "react";
 
 const Navbar = () => {
-    const [user, setUser] = useState(true)
+    const {user, logout} = useContext(AuthContext)
 
   return (
     <nav className={styles.navBar}>
@@ -19,7 +21,7 @@ const Navbar = () => {
 
       <div className={styles.controll}>
         {user ? (
-          <button onClick={() => setUser(!user)} className={`${styles.logoutBtn} ${styles.btn}`}><FaSignOutAlt /> Logout</button>
+          <button onClick={logout} className={`${styles.logoutBtn} ${styles.btn}`}><FaSignOutAlt /> Logout</button>
         ) : (
           <div className={styles.loginRegDiv}>
            <Link to={"login"}> <button className={`${styles.loginBtn} `}>Login</button></Link>

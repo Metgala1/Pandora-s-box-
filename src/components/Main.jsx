@@ -12,11 +12,14 @@ import {
   FaMobileScreen,
   FaArrowRight,
 } from "react-icons/fa6";
+import { AuthContext } from "../authContext/AuthContext";
+import { useContext } from "react";
 
 import { Link } from "react-router-dom";
 
 const Main = () => {
-  let user = { name: "Roger" };
+ const {user} = useContext(AuthContext)
+ console.log(user)
 
   return (
     <main className={styles.mainContainer}>
@@ -51,7 +54,7 @@ const Main = () => {
       ) : (
         <section className={styles.welcomeSection}>
           <h2>
-            Welcome back, {user.name}{" "}
+            Welcome back, {user.username}{" "}
             <FaUser style={{ color: "burlywood" }} />
           </h2>
           <p>Manage, preview, and share your files instantly.</p>

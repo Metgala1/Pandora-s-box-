@@ -62,9 +62,11 @@ const Main = () => {
             <a className={`${styles.btn} ${styles.uploadBtn}`} href="/upload">
               <FaUpload /> Upload File
             </a>
-            <a className={`${styles.btn} ${styles.loginBtn}`} href="/files">
+            <Link to={"files"}>
+            <a className={`${styles.btn} ${styles.loginBtn}`}>
               <FaFolderOpen /> View Files
             </a>
+            </Link>
           </div>
         </section>
       )}

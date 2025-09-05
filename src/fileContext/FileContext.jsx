@@ -57,7 +57,7 @@ const uploadFile = async (formData, onProgress) => {
 
   const fetchImages = useCallback(async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/files/images`, {
+      const { data } = await axios.get(`${BASE_URL}/images`, {
         withCredentials: true,
       });
       setImages(data);
@@ -102,6 +102,30 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
+    const downloadFile = async (id, filename) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/download/${id}`, {
+        responseType: "blob", // important: get binary data
+        withCredentials: true,
+      });
+
+      // Create a temporary link to trigger the download
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", filename || `file-${id}`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Free memory
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      setError(err.response?.data?.message || "Error downloading file");
+    }
+  };
+
+
   return (
     <FileContext.Provider
       value={{
@@ -117,6 +141,7 @@ const uploadFile = async (formData, onProgress) => {
         fetchVideos,
         fetchAudios,
         deleteFile,
+        downloadFile
       }}
     >
       {children}

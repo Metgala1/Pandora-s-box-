@@ -5,7 +5,9 @@ import { useContext, useEffect } from "react";
 
 const FileManager = () => {
   const BASE_URL = "https://pandora-s-box-production.up.railway.app";
-  const { fetchFiles, files, deleteFile } = useContext(FileContext);
+  const { fetchFiles, files, deleteFile, downloadFile } = useContext(FileContext);
+
+  console.log(files)
 
   useEffect(() => {
     fetchFiles();
@@ -74,12 +76,9 @@ const FileManager = () => {
                 </div>
 
                 <div className={styles.fileActions}>
-                  <a
-                    className={`${styles.btn} ${styles.btnPrimary}`}
-                    href={`/download/${file.id}`}
-                  >
+                 <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={() => downloadFile(file.id, file.filename)}>
                     Download
-                  </a>
+                 </button>
                   <button
                     className={`${styles.btn} ${styles.btnDanger}`}
                     onClick={() => handleDelete(file.id)}

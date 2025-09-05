@@ -1,5 +1,5 @@
 // src/context/FileContext.jsx
-import { createContext, useState, useContext, useCallback } from "react";
+import { createContext, useState,  useCallback } from "react";
 import axios from "axios";
 
 export const FileContext = createContext();
@@ -90,7 +90,7 @@ const uploadFile = async (formData, onProgress) => {
 
   const deleteFile = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/files/${id}`, {
+      await axios.delete(`${BASE_URL}/delete/${id}`, {
         withCredentials: true,
       });
       setFiles((prev) => prev.filter((file) => file.id !== id));

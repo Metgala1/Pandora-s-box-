@@ -5,13 +5,20 @@ import { useContext, useEffect } from "react";
 
 const FileManager = () => {
   const BASE_URL = "https://pandora-s-box-production.up.railway.app";
-
-  const { fetchFiles, files } = useContext(FileContext);
-  
+  const { fetchFiles, files, deleteFile } = useContext(FileContext);
 
   useEffect(() => {
     fetchFiles();
   }, [fetchFiles]);
+
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm(
+      "Delete this file? This cannot be undone."
+    );
+    if (confirmDelete) {
+      deleteFile(id);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -31,7 +38,7 @@ const FileManager = () => {
         <div className={styles.filesGrid}>
           {files.map((file) => {
             const fileUrl = new URL(file.url, BASE_URL).href;
-            
+
             return (
               <div className={styles.fileCard} key={file.id}>
                 {file.mimetype.startsWith("image/") ? (
@@ -41,7 +48,7 @@ const FileManager = () => {
                     className={styles.filePreview}
                   />
                 ) : file.mimetype.startsWith("video/") ? (
-                  <video className={styles.filePreview} controls>
+                  <video  className={styles.filePreview} controls>
                     <source src={fileUrl} type={file.mimetype} />
                     Your browser does not support video playback.
                   </video>
@@ -73,24 +80,12 @@ const FileManager = () => {
                   >
                     Download
                   </a>
-                  <form
-                    action={`/delete/${file.id}`}
-                    method="POST"
-                    onSubmit={(e) => {
-                      if (
-                        !window.confirm("Delete this file? This cannot be undone.")
-                      ) {
-                        e.preventDefault();
-                      }
-                    }}
+                  <button
+                    className={`${styles.btn} ${styles.btnDanger}`}
+                    onClick={() => handleDelete(file.id)}
                   >
-                    <button
-                      className={`${styles.btn} ${styles.btnDanger}`}
-                      type="submit"
-                    >
-                      Delete
-                    </button>
-                  </form>
+                    Delete
+                  </button>
                 </div>
               </div>
             );

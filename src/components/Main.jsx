@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 
 const Main = () => {
  const {user} = useContext(AuthContext)
- console.log(user)
 
   return (
     <main className={styles.mainContainer}>

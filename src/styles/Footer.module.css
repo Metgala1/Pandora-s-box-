@@ -32,7 +32,7 @@
 }
 
 .icons{
-    width: 50%;
+    width: 35%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -51,9 +51,14 @@
     color: white;
 }
 
+a{
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .icons {
-        width: 100%;
+        width: 90%;
+        padding-bottom: 0.5rem;
     }
     .footer{
         padding: 0px 2rem;

@@ -6,8 +6,8 @@ import {
   FaRegImage,
   FaVideo,
   FaHeadphones,
-  FaRegComment,
   FaRegUser,
+  FaRegFileAlt, // 📄 document icon
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -46,10 +46,10 @@ const Footer = () => {
               }`}
             />
           </Link>
-          <Link to="/comments">
-            <FaRegComment
+          <Link to="/documents">
+            <FaRegFileAlt
               className={`${styles.icon} ${
-                location.pathname === "/comments" ? styles.active : ""
+                location.pathname === "/documents" ? styles.active : ""
               }`}
             />
           </Link>

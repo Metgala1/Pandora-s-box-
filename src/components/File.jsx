@@ -2,6 +2,7 @@
 import styles from "../styles/File.module.css";
 import { FileContext } from "../fileContext/FileContext";
 import { useContext, useEffect } from "react";
+import Footer from "./Footer";
 
 const FileManager = () => {
   const BASE_URL = "https://pandora-s-box-production.up.railway.app";
@@ -97,6 +98,7 @@ const FileManager = () => {
           Upload More
         </a>
       </div>
+      <Footer />
     </div>
   );
 };

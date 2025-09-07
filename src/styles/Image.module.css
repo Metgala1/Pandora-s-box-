@@ -1,17 +1,13 @@
-/* =====================
-   Global Container
-===================== */
+
 .container {
-  max-width: 1200px;
+  
   margin: 0 auto;
   padding: 2rem 1rem;
   color: var(--text, #e6e9ef);
   background: var(--bg, #0b0d10);
 }
 
-/* =====================
-   Headings
-===================== */
+
 .heading {
   font-size: 2rem;
   font-weight: 700;
@@ -27,9 +23,7 @@
   margin-bottom: 2rem;
 }
 
-/* =====================
-   Empty State
-===================== */
+
 .card.noFiles {
   text-align: center;
   background: var(--panel, #11141a);
@@ -42,18 +36,14 @@
   margin-bottom: 1rem;
 }
 
-/* =====================
-   File Grid
-===================== */
+
 .filesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
-/* =====================
-   File Card
-===================== */
+
 .fileCard {
   background: var(--panel, #11141a);
   border-radius: 1rem;

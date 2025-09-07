@@ -2,6 +2,7 @@ import { useRef, useState, useContext, useEffect } from "react";
 import styles from "../styles/FileUpload.module.css";
 import { FaVideo, FaHeadphones, FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFile } from "react-icons/fa";
 import { FileContext } from "../fileContext/MyFileContext";
+import Footer from "./Footer";
 
 const FileUpload = () => {
   const fileInputRef = useRef(null);
@@ -134,6 +135,7 @@ const FileUpload = () => {
           <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
         </div>
       )}
+     <Footer />
     </div>
   );
 };

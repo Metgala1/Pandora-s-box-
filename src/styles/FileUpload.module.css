@@ -15,6 +15,9 @@
   color: var(--brand, #0d4f55);
   margin-bottom: 0.5rem;
 }
+.wrapper{
+   background: var(--bg, #0b0d10);
+}
 
 .mute {
   font-size: 0.95rem;

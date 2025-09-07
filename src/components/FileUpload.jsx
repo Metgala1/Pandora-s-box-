@@ -80,6 +80,7 @@ const FileUpload = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1>Upload Files</h1>
       <p className={styles.mute}>
@@ -136,6 +137,7 @@ const FileUpload = () => {
         </div>
       )}
      <Footer />
+    </div>
     </div>
   );
 };

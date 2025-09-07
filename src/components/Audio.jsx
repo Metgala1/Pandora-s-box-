@@ -23,6 +23,7 @@ const Audios = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1 className={styles.heading}>My Audios</h1>
       <p className={styles.mute}>
@@ -90,7 +91,9 @@ const Audios = () => {
           Upload More
         </Link>
       </div>
-      <Footer />
+      
+    </div>
+    <Footer />
     </div>
   );
 };

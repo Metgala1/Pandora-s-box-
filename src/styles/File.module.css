@@ -134,6 +134,9 @@
   font-weight: bold;
   word-break: break-word;
 }
+.wrapper{
+   background: var(--bg, #0b0d10);
+}
 
 .fileMeta {
   font-size: 13px;

@@ -25,6 +25,7 @@ const FileManager = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1 className={styles.heading}>My Files</h1>
       <p className={styles.mute}>
@@ -100,6 +101,7 @@ const FileManager = () => {
         </Link>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

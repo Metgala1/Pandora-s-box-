@@ -23,6 +23,7 @@ const Documents = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1 className={styles.heading}>My Documents</h1>
       <p className={styles.mute}>
@@ -73,6 +74,7 @@ const Documents = () => {
             </div>
           ))}
         </div>
+        
       )}
 
       <div className={styles.row} style={{ marginTop: "14px" }}>
@@ -82,6 +84,7 @@ const Documents = () => {
       </div>
 
       <Footer />
+    </div>
     </div>
   );
 };

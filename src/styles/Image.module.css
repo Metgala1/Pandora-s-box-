@@ -1,10 +1,12 @@
 
 .container {
-  
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
   color: var(--text, #e6e9ef);
-  background: var(--bg, #0b0d10);
+}
+.wrapper{
+   background: var(--bg, #0b0d10);
 }
 
 

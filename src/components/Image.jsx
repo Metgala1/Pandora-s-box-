@@ -23,6 +23,7 @@ const Images = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1 className={styles.heading}>My Images</h1>
       <p className={styles.mute}>
@@ -89,6 +90,7 @@ const Images = () => {
         </Link>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

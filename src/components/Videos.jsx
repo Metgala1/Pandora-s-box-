@@ -22,6 +22,7 @@ const Videos = () => {
   };
 
   return (
+    <div className={styles.wrapper}>
     <div className={styles.container}>
       <h1 className={styles.heading}>My Videos</h1>
       <p className={styles.mute}>
@@ -87,6 +88,7 @@ const Videos = () => {
         </Link>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

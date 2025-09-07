@@ -3,6 +3,7 @@ import styles from "../styles/Image.module.css";
 import { FileContext } from "../fileContext/MyFileContext";
 import { useContext, useEffect } from "react";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Documents = () => {
   const { fetchDocuments, documents, deleteFile, downloadFile } =

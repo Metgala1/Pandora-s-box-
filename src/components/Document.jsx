@@ -83,8 +83,9 @@ const Documents = () => {
         </Link>
       </div>
 
-      <Footer />
+     
     </div>
+     <Footer />
     </div>
   );
 };

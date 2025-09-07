@@ -89,8 +89,9 @@ const Images = () => {
           Upload More
         </Link>
       </div>
-      <Footer />
+      
     </div>
+    <Footer />
     </div>
   );
 };

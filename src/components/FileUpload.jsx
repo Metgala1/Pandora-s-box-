@@ -136,8 +136,9 @@ const FileUpload = () => {
           <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
         </div>
       )}
-     <Footer />
+     
     </div>
+    <Footer />
     </div>
   );
 };

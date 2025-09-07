@@ -9,194 +9,209 @@
   --danger: #ef4444;
   --success: #22c55e;
   --warning: #f59e0b;
-  --ring: rgba(110, 231, 242, 0.4);
   --radius: 16px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+/* ====== Layout ====== */
 .mainContainer {
   width: 70vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-top: 15vh;
-  margin-bottom: 15vh;
+  margin-top: 12vh;
+  margin-bottom: 12vh;
+  color: var(--text);
 }
 
+/* ====== Hero ====== */
 .heroSection {
   text-align: center;
   padding: 5rem 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: var(--panel);
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
-
-}
-
-.heroContent p{
-    color: black;
 }
 
 .heroContent h1 {
-    font-size: clamp(36px, 4vw, 48px);
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
+  font-size: clamp(36px, 4vw, 52px);
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
 }
 
-.btn {
-    appearance: none;
-    border: 0;
-    padding: 10px 14px;
-    border-radius: 12px;
-    background: 
- color-mix(in oklab, var(--panel-2), transparent 0%);
-    color: var(--text);
-    cursor: pointer;
-    font-weight: 600;
-    border: 1px solid
- color-mix(in oklab, var(--text), transparent 88%);
-    transition: transform 0.05s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-    text-decoration: none;
+.heroContent p {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .tagLine {
-  font-size: 1.25rem;
-  color: #555;
+  margin-top: 0.5rem;
 }
 
-/* Auth Section */
+/* ====== Buttons ====== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.signupBtn {
+  background-color: var(--brand);
+  color: white;
+}
+
+.signupBtn:hover {
+  background-color: #0a3f44;
+  transform: translateY(-2px);
+}
+
+.loginBtn {
+  background-color: var(--panel-2);
+  color: var(--text);
+}
+
+.loginBtn:hover {
+  background-color: #1b1e28;
+  transform: translateY(-2px);
+}
+
+.uploadBtn {
+  background-color: var(--success);
+  color: white;
+}
+
+.uploadBtn:hover {
+  background-color: #1a9a4d;
+  transform: translateY(-2px);
+}
+
+/* ====== Auth Section ====== */
 .authSection {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .authBtn {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
-.btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.signupBtn {
-  background-color: #0077ff;
-  color: white;
-}
-
-.signupBtn:hover {
-  background-color: #005fcc;
-}
-
-.loginBtn {
-  background-color: #f1f1f1;
-  color: #333;
-}
-
-.loginBtn:hover {
-  background-color: #ddd;
-}
-
-/* Welcome Section */
+/* ====== Welcome Section ====== */
 .welcomeSection {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .quickAction {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
-.uploadBtn {
-  background-color: #28a745;
-  color: white;
-}
-
-.uploadBtn:hover {
-  background-color: #218838;
-}
-
-/* Features Section */
+/* ====== Features ====== */
 .features {
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
 }
 
 .featureGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  justify-content: center;
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 }
 
 .featureCard {
-  padding: 1.5rem;
-  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  box-shadow: var(--shadow);
   text-align: center;
-  box-shadow: 0 2px 8px #333; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
 }
 
 .featureCard h3 {
-  margin-bottom: 0.75rem;
-  font-weight: 800;
+  margin: 1rem 0 0.75rem;
+  font-weight: 700;
 }
 
-.icon{
-    color: var(--brand);
+.featureCard p {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-/* Call to Action */
+.icon {
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+}
+
+/* ====== Call to Action ====== */
 .cta {
   text-align: center;
   padding: 3rem 2rem;
-  border-radius: 1rem;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: white;
+  box-shadow: var(--shadow);
 }
 
 .cta h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  font-weight: 800;
 }
 
 .cta p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
-  color: #444;
+  opacity: 0.9;
 }
 
+/* ====== Responsive ====== */
 @media (max-width: 768px) {
-    .mainContainer{
-        width: 100%;
-        margin-top: 8vh;
-        margin-bottom: 10vh;
-    }
-    .heroSection{
-        padding-top: 2rem;
-        margin-bottom: 2rem;
-    }
-    .welcomeSection{
-        padding: 0.2rem 1rem;
-        margin-bottom: 10px;
-    }
-    .features{
-        padding: 0px 0.6rem;
-    }
-    .featureCard{
-        border-radius: 0px;
+  .mainContainer {
+    width: 100%;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+    padding: 0 1rem;
+  }
 
-    }
+  .heroSection {
+    padding: 3rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 
+  .featureGrid {
+    gap: 1rem;
+  }
 
+  .featureCard {
+    padding: 1.25rem 1rem;
+  }
 }

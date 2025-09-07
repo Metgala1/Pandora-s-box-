@@ -39,14 +39,14 @@ const Main = () => {
           <p>Create a free account and start managing your files today.</p>
           <div className={styles.authBtn}>
             <Link to={"signup"}>
-            <a className={`${styles.btn} ${styles.signupBtn}`} href="/register">
+            <p className={`${styles.btn} ${styles.signupBtn}`} href="/register">
               <FaUserPlus /> Sign Up
-            </a>
+            </p>
             </Link>
             <Link to={"login"}>
-            <a className={`${styles.btn} ${styles.loginBtn}`} href="/login">
+            <p className={`${styles.btn} ${styles.loginBtn}`} href="/login">
               <FaRightToBracket /> Login
-            </a>
+            </p>
             </Link>
           </div>
         </section>
@@ -59,14 +59,14 @@ const Main = () => {
           <p>Manage, preview, and share your files instantly.</p>
           <div className={styles.quickAction}>
             <Link to={"upload"}>
-            <a className={`${styles.btn} ${styles.uploadBtn}`} href="/upload">
+            <p className={`${styles.btn} ${styles.uploadBtn}`} href="/upload">
               <FaUpload /> Upload File
-            </a>
+            </p>
             </Link>
             <Link to={"files"}>
-            <a className={`${styles.btn} ${styles.loginBtn}`}>
+            <p className={`${styles.btn} ${styles.loginBtn}`}>
               <FaFolderOpen /> View Files
-            </a>
+            </p>
             </Link>
           </div>
         </section>

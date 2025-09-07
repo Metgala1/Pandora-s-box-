@@ -5,6 +5,9 @@ import FileManager from "./components/File"
 import FileUpload from "./components/FileUpload"
 import Images from "./components/Image"
 import Videos from "./components/Videos"
+import Audios from "./components/Audio"
+import Documents from "./components/Document"
+import ComingSoon from "./components/ComingSoon"
 
 const routes = [
     {
@@ -34,6 +37,18 @@ const routes = [
     {
         path: "videos",
         element: <Videos />
+    },
+    {
+        path: "audios",
+        element: <Audios />
+    },
+    {
+        path: "documents",
+        element: <Documents />
+    },
+    {
+        path: "profile",
+        element: <ComingSoon />
     }
     
 ]

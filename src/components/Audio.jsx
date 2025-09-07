@@ -1,0 +1,97 @@
+// src/components/Audios.jsx
+import styles from "../styles/Image.module.css"; // you can make a dedicated Audio.module.css if needed
+import { FileContext } from "../fileContext/FileContext";
+import { useContext, useEffect } from "react";
+import Footer from "./Footer";
+
+const Audios = () => {
+  const BASE_URL = "https://pandora-s-box-production.up.railway.app";
+  const { fetchAudios, audios, deleteFile, downloadFile } = useContext(FileContext);
+
+  useEffect(() => {
+    fetchAudios();
+  }, [fetchAudios]);
+
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm(
+      "Delete this audio? This cannot be undone."
+    );
+    if (confirmDelete) {
+      deleteFile(id);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.heading}>My Audios</h1>
+      <p className={styles.mute}>
+        All uploaded audio files. Play, download, or delete your tracks.
+      </p>
+
+      {audios.length === 0 ? (
+        <div className={`${styles.card} ${styles.noFiles}`}>
+          <p className={styles.mute}>No audio files uploaded yet.</p>
+          <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+            Upload your first audio
+          </a>
+        </div>
+      ) : (
+        <div className={styles.filesGrid}>
+          {audios.map((file) => {
+            const fileUrl = file.url.startsWith("http")
+              ? file.url
+              : `${BASE_URL}${file.url}`;
+
+            return (
+              <div className={styles.fileCard} key={file.id}>
+                <audio
+                  controls
+                  src={fileUrl}
+                  className={styles.filePreview}
+                >
+                  Your browser does not support the audio element.
+                </audio>
+
+                <div className={styles.fileInfo}>
+                  <span className={`${styles.filename} ${styles.mono}`}>
+                    {file.filename}
+                  </span>
+                  <span className={`${styles.fileMeta} ${styles.mute}`}>
+                    {file.mimetype} • {(file.size / 1024).toFixed(1)} KB
+                  </span>
+                  <span className={`${styles.fileMeta} ${styles.mute}`}>
+                    Added: {new Date(file.createdAt).toLocaleString()}
+                  </span>
+                </div>
+
+                <div className={styles.fileActions}>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    onClick={() => downloadFile(file.id, file.filename)}
+                  >
+                    Download
+                  </button>
+                  <button
+                    className={`${styles.btn} ${styles.btnDanger}`}
+                    onClick={() => handleDelete(file.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      <div className={styles.row} style={{ marginTop: "14px" }}>
+        <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+          Upload More
+        </a>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Audios;

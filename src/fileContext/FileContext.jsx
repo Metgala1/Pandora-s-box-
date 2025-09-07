@@ -9,6 +9,7 @@ export const FileProvider = ({ children }) => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [audios, setAudios] = useState([]);
+  const [documents, setDocuments] = useState()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -125,6 +126,20 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
+  const fetchDocuments = useCallback( async () => {
+      try {
+    const { data } = await axios.get(`${BASE_URL}/documents`, {
+      withCredentials: true,
+    });
+    setDocuments(data);
+  } catch (err) {
+    console.error("Error fetching documents:", err);
+    setDocuments([]); // fallback to empty array if request fails
+  }
+
+  },[BASE_URL])
+
+
 
   return (
     <FileContext.Provider
@@ -141,7 +156,10 @@ const uploadFile = async (formData, onProgress) => {
         fetchVideos,
         fetchAudios,
         deleteFile,
-        downloadFile
+        downloadFile,
+        fetchDocuments,
+        setDocuments,
+        documents
       }}
     >
       {children}

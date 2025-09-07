@@ -75,9 +75,9 @@ const Documents = () => {
       )}
 
       <div className={styles.row} style={{ marginTop: "14px" }}>
-        <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+        <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
           Upload More
-        </a>
+        </Link>
       </div>
 
       <Footer />

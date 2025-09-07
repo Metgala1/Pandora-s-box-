@@ -3,6 +3,7 @@ import styles from "../styles/Image.module.css";
 import { FileContext } from "../fileContext/MyFileContext";
 import { useContext, useEffect } from "react";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Images = () => {
   const BASE_URL = "https://pandora-s-box-production.up.railway.app";
@@ -83,9 +84,9 @@ const Images = () => {
       )}
 
       <div className={styles.row} style={{ marginTop: "14px" }}>
-        <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+        <Link className={`${styles.btn} ${styles.btnPrimary}`} to="upload">
           Upload More
-        </a>
+        </Link>
       </div>
       <Footer />
     </div>

@@ -6,12 +6,13 @@ import {
   FaRegImage,
   FaVideo,
   FaHeadphones,
-  FaRegUser,
+  FaUpload,
   FaRegFileAlt
 } from "react-icons/fa";
 
 const Footer = () => {
   const [user] = useState(true);
+  const location = useLocation();
 
   return (
     <footer className={styles.footer}>
@@ -52,10 +53,10 @@ const Footer = () => {
               }`}
             />
           </Link>
-          <Link to="/profile">
-            <FaRegUser
+          <Link to="/upload">
+            <FaUpload
               className={`${styles.icon} ${
-                location.pathname === "/profile" ? styles.active : ""
+                location.pathname === "/upload" ? styles.active : ""
               }`}
             />
           </Link>

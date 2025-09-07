@@ -1,7 +1,7 @@
 import { useRef, useState, useContext, useEffect } from "react";
 import styles from "../styles/FileUpload.module.css";
 import { FaVideo, FaHeadphones, FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerpoint, FaFile } from "react-icons/fa";
-import { FileContext } from "../fileContext/FileContex";
+import { FileContext } from "../fileContext/FileContext";
 
 const FileUpload = () => {
   // We use a ref to programmatically trigger the hidden file input

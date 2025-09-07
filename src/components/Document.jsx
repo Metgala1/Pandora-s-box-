@@ -1,12 +1,12 @@
 // src/components/Documents.jsx
 import styles from "../styles/Image.module.css"; 
-import { FileContext } from "../fileContext/fileContext";
+import { FileContext } from "../fileContext/FileContext";
 import { useContext, useEffect } from "react";
 import Footer from "./Footer";
 
 const Documents = () => {
-  const BASE_URL = "https://pandora-s-box-production.up.railway.app";
-  const { fetchDocuments, documents, deleteFile, downloadFile } = useContext(FileContext);
+  const { fetchDocuments, documents, deleteFile, downloadFile } =
+    useContext(FileContext);
 
   useEffect(() => {
     fetchDocuments();
@@ -37,46 +37,40 @@ const Documents = () => {
         </div>
       ) : (
         <div className={styles.filesGrid}>
-          {documents.map((file) => {
-            const fileUrl = file.url.startsWith("http")
-              ? file.url
-              : `${BASE_URL}${file.url}`;
-
-            return (
-              <div className={styles.fileCard} key={file.id}>
-                <div className={styles.filePreview}>
-                  <i className="fa fa-file-text fa-3x" aria-hidden="true"></i>
-                </div>
-
-                <div className={styles.fileInfo}>
-                  <span className={`${styles.filename} ${styles.mono}`}>
-                    {file.filename}
-                  </span>
-                  <span className={`${styles.fileMeta} ${styles.mute}`}>
-                    {file.mimetype} • {(file.size / 1024).toFixed(1)} KB
-                  </span>
-                  <span className={`${styles.fileMeta} ${styles.mute}`}>
-                    Added: {new Date(file.createdAt).toLocaleString()}
-                  </span>
-                </div>
-
-                <div className={styles.fileActions}>
-                  <button
-                    className={`${styles.btn} ${styles.btnPrimary}`}
-                    onClick={() => downloadFile(file.id, file.filename)}
-                  >
-                    Download
-                  </button>
-                  <button
-                    className={`${styles.btn} ${styles.btnDanger}`}
-                    onClick={() => handleDelete(file.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
+          {documents.map((file) => (
+            <div className={styles.fileCard} key={file.id}>
+              <div className={styles.filePreview}>
+                <i className="fa fa-file-text fa-3x" aria-hidden="true"></i>
               </div>
-            );
-          })}
+
+              <div className={styles.fileInfo}>
+                <span className={`${styles.filename} ${styles.mono}`}>
+                  {file.filename}
+                </span>
+                <span className={`${styles.fileMeta} ${styles.mute}`}>
+                  {file.mimetype} • {(file.size / 1024).toFixed(1)} KB
+                </span>
+                <span className={`${styles.fileMeta} ${styles.mute}`}>
+                  Added: {new Date(file.createdAt).toLocaleString()}
+                </span>
+              </div>
+
+              <div className={styles.fileActions}>
+                <button
+                  className={`${styles.btn} ${styles.btnPrimary}`}
+                  onClick={() => downloadFile(file.id, file.filename)}
+                >
+                  Download
+                </button>
+                <button
+                  className={`${styles.btn} ${styles.btnDanger}`}
+                  onClick={() => handleDelete(file.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       )}
 
@@ -85,6 +79,7 @@ const Documents = () => {
           Upload More
         </a>
       </div>
+
       <Footer />
     </div>
   );

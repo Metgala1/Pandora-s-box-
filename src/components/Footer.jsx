@@ -9,9 +9,11 @@ import {
   FaUpload,
   FaRegFileAlt
 } from "react-icons/fa";
+import { AuthContext } from "../authContext/AuthContext";
+import { useContext } from "react";
 
 const Footer = () => {
-  const [user] = useState(true);
+  const {user} = useContext(AuthContext)
   const location = useLocation();
 
   return (

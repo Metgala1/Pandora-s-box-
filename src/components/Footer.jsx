@@ -7,6 +7,7 @@ import {
   FaVideo,
   FaHeadphones,
   FaRegUser,
+  FaRegFileAlt
 } from "react-icons/fa";
 
 const Footer = () => {

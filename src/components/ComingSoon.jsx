@@ -1,4 +1,4 @@
-// src/components/ComingSoon.jsx
+
 import styles from "../styles/ComingSoon.module.css"; // Create this CSS module
 import { FaHourglassHalf } from "react-icons/fa";
 import Footer from "./Footer";

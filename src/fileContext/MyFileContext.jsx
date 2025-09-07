@@ -166,4 +166,3 @@ const uploadFile = async (formData, onProgress) => {
     </FileContext.Provider>
   );
 };
-

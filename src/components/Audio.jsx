@@ -1,6 +1,6 @@
 // src/components/Audios.jsx
 import styles from "../styles/Image.module.css"; // you can make a dedicated Audio.module.css if needed
-import { FileContext } from "../fileContext/FileContext";
+import { FileContext } from "../fileContext/MyFileContext";
 import { useContext, useEffect } from "react";
 import Footer from "./Footer";
 

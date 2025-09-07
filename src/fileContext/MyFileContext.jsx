@@ -99,26 +99,30 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
-    const downloadFile = async (id, filename) => {
-    try {
-      const response = await axios.get(`${BASE_URL}/download/${id}`, {
-        responseType: "blob", // important: get binary data
-        withCredentials: true,
-      });
+   const downloadFile = async (id, filename) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/download/${id}`, {
+      responseType: "blob", // important: binary data
+      withCredentials: true, // if using cookies/session auth
+    });
 
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", filename || `file-${id}`);
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+    const blob = new Blob([response.data], { type: response.data.type });
+    const url = window.URL.createObjectURL(blob);
 
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      setError(err.response?.data?.message || "Error downloading file");
-    }
-  };
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", filename); // Use original filename
+    document.body.appendChild(link);
+    link.click();
+
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    console.error(err);
+    alert(err.response?.data?.message || "Error downloading file");
+  }
+};
+
 
   const fetchDocuments = useCallback( async () => {
       try {

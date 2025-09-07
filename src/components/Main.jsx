@@ -106,9 +106,9 @@ const Main = () => {
             <FaArrowRight /> Create Free Account
           </a>
         ) : (
-          <a className={`${styles.btn} ${styles.loginBtn}`} href="/files">
+          <Link className={`${styles.btn} ${styles.loginBtn}`} to="/files">
             <FaArrowRight /> Go To My Files
-          </a>
+          </Link>
         )}
       </section>
     </main>

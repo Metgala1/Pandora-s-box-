@@ -82,7 +82,7 @@ const Videos = () => {
       )}
 
       <div className={styles.row} style={{ marginTop: "14px" }}>
-        <Link className={`${styles.btn} ${styles.btnPrimary}`} to="upload">
+        <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
           Upload More
         </Link>
       </div>

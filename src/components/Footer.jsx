@@ -25,38 +25,38 @@ const Footer = () => {
               }`}
             />
           </Link>
-          <Link to="images">
+          <Link to="/images">
             <FaRegImage
               className={`${styles.icon} ${
-                location.pathname === "images" ? styles.active : ""
+                location.pathname === "/images" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="videos">
+          <Link to="/videos">
             <FaVideo
               className={`${styles.icon} ${
-                location.pathname === "videos" ? styles.active : ""
+                location.pathname === "/videos" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="audios">
+          <Link to="/audios">
             <FaHeadphones
               className={`${styles.icon} ${
                 location.pathname === "/audios" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="documents">
+          <Link to="/documents">
             <FaRegFileAlt
               className={`${styles.icon} ${
-                location.pathname === "documents" ? styles.active : ""
+                location.pathname === "/documents" ? styles.active : ""
               }`}
             />
           </Link>
-          <Link to="upload">
+          <Link to="/upload">
             <FaUpload
               className={`${styles.icon} ${
-                location.pathname === "upload" ? styles.active : ""
+                location.pathname === "/upload" ? styles.active : ""
               }`}
             />
           </Link>

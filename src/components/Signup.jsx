@@ -20,13 +20,11 @@ const SignUp = () => {
   const { signup } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Handle input changes
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);

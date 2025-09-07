@@ -1,5 +1,5 @@
 
-import styles from "../styles/ComingSoon.module.css"; // Create this CSS module
+import styles from "../styles/ComingSoon.module.css";
 import { FaHourglassHalf } from "react-icons/fa";
 import Footer from "./Footer";
 

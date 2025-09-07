@@ -4,17 +4,12 @@ import { FaVideo, FaHeadphones, FaFilePdf, FaFileWord, FaFileExcel, FaFilePowerp
 import { FileContext } from "../fileContext/MyFileContext";
 
 const FileUpload = () => {
-  // We use a ref to programmatically trigger the hidden file input
   const fileInputRef = useRef(null);
-  // State to hold file previews for display before upload
   const [previews, setPreviews] = useState([]);
-  // State for tracking the upload progress percentage
   const [progress, setProgress] = useState(0);
 
-  // Destructure the necessary functions and state from the FileContext
   const { uploadFile, loading, error, setError } = useContext(FileContext);
 
-  // Effect to automatically clear the error message after 3 seconds
   useEffect(() => {
     if (error) {
       const timer = setTimeout(() => {
@@ -24,18 +19,14 @@ const FileUpload = () => {
     }
   }, [error, setError]);
 
-  // Handles adding files from either a drop or a browse event
   const handleFiles = (files) => {
     const fileArray = Array.from(files).map((file) => ({
       file,
-      // Create a temporary URL for image previews
       preview: file.type.startsWith("image/") ? URL.createObjectURL(file) : null,
       type: file.type,
       name: file.name,
     }));
     setPreviews(fileArray);
-    // Reset progress when new files are selected
-    // and cleanup any previous object URLs
     previews.forEach(p => {
       if (p.preview) {
         URL.revokeObjectURL(p.preview);
@@ -44,34 +35,27 @@ const FileUpload = () => {
     setProgress(0);
   };
 
-  // Handles the file drop event on the dropzone
   const handleDrop = (e) => {
     e.preventDefault();
     handleFiles(e.dataTransfer.files);
   };
   
-  // Triggers the hidden file input when the dropzone is clicked
   const handleBrowse = () => {
     fileInputRef.current.click();
   };
 
-  // Handles the form submission to upload the selected file
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check if a file has been selected
     if (previews.length === 0) {
       setError("Please select a file to upload.");
       return;
     }
 
     const formData = new FormData();
-    // Your current context only handles one file, so we'll use the first one
     formData.append("file", previews[0].file);
 
     try {
-      // Pass the setProgress function as a callback to the uploadFile context function
       await uploadFile(formData, (percent) => setProgress(percent));
-      // Clear the previews after a successful upload
       previews.forEach(p => {
         if (p.preview) {
           URL.revokeObjectURL(p.preview);
@@ -79,12 +63,10 @@ const FileUpload = () => {
       });
       setPreviews([]);
     } catch (err) {
-      // The error is handled by the context, so we just log here.
       console.error(err);
     }
   };
 
-  // Renders the appropriate icon based on the file type
   const renderIcon = (p) => {
     if (p.preview) return <img src={p.preview} alt={p.name} className={styles.filePreview} />;
     if (p.type.startsWith("video/")) return <FaVideo size={48} color="#f59e0b" />;
@@ -147,7 +129,6 @@ const FileUpload = () => {
         </button>
       </form>
       
-      {/* Conditionally render the progress bar when the upload is in progress */}
       {loading && (
         <div className={styles.progressBar}>
           <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>

@@ -1,4 +1,3 @@
-// src/components/Videos.jsx
 import styles from "../styles/Image.module.css";
 import { FileContext } from "../fileContext/MyFileContext";
 import { useContext, useEffect } from "react";

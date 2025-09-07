@@ -1,4 +1,3 @@
-// src/context/FileContext.jsx
 import { createContext, useState,  useCallback } from "react";
 import axios from "axios";
 
@@ -21,9 +20,7 @@ const uploadFile = async (formData, onProgress) => {
     setError(null);
 
     const { data } = await axios.post(`${BASE_URL}/upload`, formData, {
-      // The onUploadProgress callback gives us the progress event
       onUploadProgress: (progressEvent) => {
-        // We calculate the percentage and call the onProgress callback
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         onProgress(percentCompleted);
       },
@@ -35,7 +32,6 @@ const uploadFile = async (formData, onProgress) => {
     return data.file;
   } catch (err) {
     setError(err.response?.data?.message || "Upload failed");
-    // Also reset progress to 0 on error
     onProgress(0);
   } finally {
     setLoading(false);
@@ -110,7 +106,6 @@ const uploadFile = async (formData, onProgress) => {
         withCredentials: true,
       });
 
-      // Create a temporary link to trigger the download
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
@@ -119,7 +114,6 @@ const uploadFile = async (formData, onProgress) => {
       link.click();
       link.remove();
 
-      // Free memory
       window.URL.revokeObjectURL(url);
     } catch (err) {
       setError(err.response?.data?.message || "Error downloading file");

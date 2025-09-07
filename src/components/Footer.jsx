@@ -7,12 +7,10 @@ import {
   FaVideo,
   FaHeadphones,
   FaRegUser,
-  FaRegFileAlt, // 📄 document icon
 } from "react-icons/fa";
 
 const Footer = () => {
   const [user] = useState(true);
-  const location = useLocation(); // Get current route
 
   return (
     <footer className={styles.footer}>

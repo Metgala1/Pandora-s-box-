@@ -32,9 +32,9 @@ const Videos = () => {
       {videos.length === 0 ? (
         <div className={`${styles.card} ${styles.noFiles}`}>
           <p className={styles.mute}>No videos uploaded yet.</p>
-          <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+          <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
             Upload your first video
-          </a>
+          </Link>
         </div>
       ) : (
         <div className={styles.filesGrid}>

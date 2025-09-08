@@ -35,9 +35,9 @@ const FileManager = () => {
       {files.length === 0 ? (
         <div className={`${styles.card} ${styles.noFiles}`}>
           <p className={styles.mute}>No files uploaded yet.</p>
-          <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+          <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
             Upload your first file
-          </a>
+          </Link>
         </div>
       ) : (
         <div className={styles.filesGrid}>

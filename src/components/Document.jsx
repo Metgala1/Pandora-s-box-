@@ -33,9 +33,9 @@ const Documents = () => {
       {!documents || documents.length === 0 ? (
         <div className={`${styles.card} ${styles.noFiles}`}>
           <p className={styles.mute}>No documents uploaded yet.</p>
-          <a className={`${styles.btn} ${styles.btnPrimary}`} href="/upload">
+          <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
             Upload your first document
-          </a>
+          </Link>
         </div>
       ) : (
         <div className={styles.filesGrid}>

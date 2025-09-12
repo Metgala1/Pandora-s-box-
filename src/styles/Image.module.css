@@ -128,10 +128,6 @@
   padding: 0;
 }
 
-.btnDanger:hover {
-  background: #991b1b;
-}
-
 
 .row {
   display: flex;
@@ -145,8 +141,8 @@
     border-radius: 0px;
   }
   .container{
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   .fileCard *{
     margin: 0;
@@ -156,7 +152,7 @@
     justify-content: space-between;
   }
  .filesGrid{
-  gap: 0px;
+  gap: 1rem;
  }
   
 }

@@ -40,9 +40,7 @@ const Audios = () => {
       ) : (
         <div className={styles.filesGrid}>
           {audios.map((file) => {
-            const fileUrl = file.url.startsWith("http")
-              ? file.url
-              : `${BASE_URL}${file.url}`;
+            const fileUrl = file.url
 
             return (
               <div className={styles.fileCard} key={file.id}>

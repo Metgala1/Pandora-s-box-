@@ -51,9 +51,6 @@ const Images = () => {
                     {file.filename}
                   </span>
                   <span className={`${styles.fileMeta} ${styles.mute}`}>
-                    {file.mimetype} • {(file.size / 1024).toFixed(1)} KB
-                  </span>
-                  <span className={`${styles.fileMeta} ${styles.mute}`}>
                     Added: {new Date(file.createdAt).toLocaleString()}
                   </span>
                 </div>

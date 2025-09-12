@@ -142,10 +142,11 @@
   .fileCard{
     padding: 0px;
     width: 100%;
+    border-radius: 0px;
   }
   .container{
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
   }
   .fileCard *{
     margin: 0;
@@ -154,4 +155,8 @@
     display: flex;
     justify-content: space-between;
   }
+ .filesGrid{
+  gap: 0px;
+ }
+  
 }

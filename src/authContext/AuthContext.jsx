@@ -63,6 +63,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+const updatePassword = async (email, password) => {
+  try {
+    const res = await axios.put(`${BASE_URL}/change-password`, { email, password }); // 👈 await here
+    const data = res.data; 
+
+    return {
+      success: true,
+      message: data?.message || "Password updated successfully",
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      success: false,
+      message: err.response?.data?.message || "Failed to update password",
+    };
+  }
+};
+
+
   const logout = () => {
     setUser(null);
     setToken(null);

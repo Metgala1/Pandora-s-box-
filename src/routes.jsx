@@ -8,6 +8,7 @@ import Videos from "./components/Videos"
 import Audios from "./components/Audio"
 import Documents from "./components/Document"
 import ComingSoon from "./components/ComingSoon"
+import ChangePassword from "./components/updatePassword"
 
 const routes = [
     {
@@ -49,6 +50,10 @@ const routes = [
     {
         path: "profile",
         element: <ComingSoon />
+    },
+    {
+        path: 'change-password',
+        element: <ChangePassword />
     }
     
 ]

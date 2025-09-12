@@ -113,8 +113,9 @@
 }
 
 .btnPrimary {
-  background: var(--brand, #0d4f55);
-  color: #fff;
+  background: none;
+  color: var(--brand, #0d4f55);
+  padding: 0;
 }
 
 .btnPrimary:hover {
@@ -122,8 +123,9 @@
 }
 
 .btnDanger {
-  background: #b91c1c;
-  color: #fff;
+  color: #b91c1c;
+  background: none;
+  padding: 0;
 }
 
 .btnDanger:hover {
@@ -135,4 +137,21 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+}
+@media (max-width: 768px) {
+  .fileCard{
+    padding: 0px;
+    width: 100%;
+  }
+  .container{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .fileCard *{
+    margin: 0;
+  }
+  .fileInfo{
+    display: flex;
+    justify-content: space-between;
+  }
 }

@@ -6,7 +6,6 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 const Images = () => {
-  const BASE_URL = "https://pandora-s-box-production.up.railway.app";
   const { fetchImages, images, deleteFile, downloadFile } = useContext(FileContext);
 
   useEffect(() => {
@@ -24,30 +23,25 @@ const Images = () => {
 
   return (
     <div className={styles.wrapper}>
-    <div className={styles.container}>
-      <h1 className={styles.heading}>My Images</h1>
-      <p className={styles.mute}>
-        All uploaded image files. Click to view, download, or delete.
-      </p>
+      <div className={styles.container}>
+        <h1 className={styles.heading}>My Images</h1>
+        <p className={styles.mute}>
+          All uploaded image files. Click to view, download, or delete.
+        </p>
 
-      {images.length === 0 ? (
-        <div className={`${styles.card} ${styles.noFiles}`}>
-          <p className={styles.mute}>No images uploaded yet.</p>
-          <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
-            Upload your first image
-          </Link>
-        </div>
-      ) : (
-        <div className={styles.filesGrid}>
-          {images.map((file) => {
-            const fileUrl = file.url.startsWith("http")
-              ? file.url
-              : `${BASE_URL}${file.url}`;
-
-            return (
+        {images.length === 0 ? (
+          <div className={`${styles.card} ${styles.noFiles}`}>
+            <p className={styles.mute}>No images uploaded yet.</p>
+            <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
+              Upload your first image
+            </Link>
+          </div>
+        ) : (
+          <div className={styles.filesGrid}>
+            {images.map((file) => (
               <div className={styles.fileCard} key={file.id}>
                 <img
-                  src={fileUrl}
+                  src={file.url} // Cloudinary URL directly
                   alt={file.filename}
                   className={styles.filePreview}
                 />
@@ -67,7 +61,7 @@ const Images = () => {
                 <div className={styles.fileActions}>
                   <button
                     className={`${styles.btn} ${styles.btnPrimary}`}
-                    onClick={() => downloadFile(file.id, file.filename)}
+                    onClick={() => downloadFile(file.url, file.filename)}
                   >
                     Download
                   </button>
@@ -79,19 +73,17 @@ const Images = () => {
                   </button>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
 
-      <div className={styles.row} style={{ marginTop: "14px" }}>
-        <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
-          Upload More
-        </Link>
+        <div className={styles.row} style={{ marginTop: "14px" }}>
+          <Link className={`${styles.btn} ${styles.btnPrimary}`} to="/upload">
+            Upload More
+          </Link>
+        </div>
       </div>
-      
-    </div>
-    <Footer />
+      <Footer />
     </div>
   );
 };

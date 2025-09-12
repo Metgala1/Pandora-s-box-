@@ -99,27 +99,24 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
-   const downloadFile = async (id, filename) => {
+  const downloadFile = async (url, filename) => {
   try {
-    const response = await axios.get(`${BASE_URL}/download/${id}`, {
-      responseType: "blob", // important: binary data
-      withCredentials: true, // if using cookies/session auth
-    });
+    // Fetch file directly from Cloudinary
+    const response = await fetch(url);
+    const blob = await response.blob();
 
-    const blob = new Blob([response.data], { type: response.data.type });
-    const url = window.URL.createObjectURL(blob);
-
+    const blobUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", filename); // Use original filename
+    link.href = blobUrl;
+    link.setAttribute("download", filename);
     document.body.appendChild(link);
     link.click();
 
     link.remove();
-    window.URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(blobUrl);
   } catch (err) {
     console.error(err);
-    alert(err.response?.data?.message || "Error downloading file");
+    alert("Error downloading file");
   }
 };
 

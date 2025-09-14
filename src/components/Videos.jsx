@@ -37,49 +37,46 @@ const Videos = () => {
           </div>
         ) : (
           <div className={styles.filesGrid}>
-            {videos.map((file) => {
-              const fileUrl = file.url;
+            {videos.map((file) => (
+              <div className={styles.fileCard} key={file.id}>
+                <video
+                  className={styles.filePreview}
+                  controls
+                  controlsList="nodownload noremoteplayback"
+                  preload="metadata"
+                  playsInline
+                  poster={file.thumbnail || "/video-placeholder.jpg"} // Supabase thumbnail if available
+                  disablePictureInPicture={false} // allows PiP
+                >
+                  <source src={file.url} type={file.mimetype} />
+                  Your browser does not support video playback.
+                </video>
 
-              return (
-                <div className={styles.fileCard} key={file.id}>
-                  <video
-                    className={styles.filePreview}
-                    controls
-                    controlsList="nodownload noremoteplayback"
-                    preload="metadata"
-                    playsInline
-                    poster="/video-placeholder.jpg" // optional: replace with Cloudinary thumbnail
-                  >
-                    <source src={fileUrl} type={file.mimetype} />
-                    Your browser does not support video playback.
-                  </video>
-
-                  <div className={styles.fileInfo}>
-                    <span className={`${styles.filename} ${styles.mono}`}>
-                      {file.filename}
-                    </span>
-                    <span className={`${styles.fileMeta} ${styles.mute}`}>
-                      Added: {new Date(file.createdAt).toLocaleString()}
-                    </span>
-                  </div>
-
-                  <div className={styles.fileActions}>
-                    <button
-                      className={`${styles.btn} ${styles.btnPrimary}`}
-                      onClick={() => downloadFile(file.id, file.filename)}
-                    >
-                      Download
-                    </button>
-                    <button
-                      className={`${styles.btn} ${styles.btnDanger}`}
-                      onClick={() => handleDelete(file.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
+                <div className={styles.fileInfo}>
+                  <span className={`${styles.filename} ${styles.mono}`}>
+                    {file.filename}
+                  </span>
+                  <span className={`${styles.fileMeta} ${styles.mute}`}>
+                    Added: {new Date(file.createdAt).toLocaleString()}
+                  </span>
                 </div>
-              );
-            })}
+
+                <div className={styles.fileActions}>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                    onClick={() => downloadFile(file.id, file.filename)}
+                  >
+                    Download
+                  </button>
+                  <button
+                    className={`${styles.btn} ${styles.btnDanger}`}
+                    onClick={() => handleDelete(file.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 

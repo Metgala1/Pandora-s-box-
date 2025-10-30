@@ -99,26 +99,43 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
-  const downloadFile = async (url, filename) => {
+ const downloadFile = async (url, filename) => {
   try {
-    // Fetch file directly from Cloudinary
     const response = await fetch(url);
-    const blob = await response.blob();
 
+    if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
+
+    // Try to get the filename from the Content-Disposition header
+    const contentDisposition = response.headers.get('Content-Disposition');
+    let extractedFilename = filename;
+
+    if (contentDisposition && contentDisposition.includes('filename=')) {
+      const match = contentDisposition.match(/filename="(.+)"/);
+      if (match && match[1]) {
+        extractedFilename = match[1];
+      }
+    }
+
+    // If no filename is extracted, use the provided filename
+    const finalFilename = extractedFilename || filename;
+
+    const blob = await response.blob();
     const blobUrl = window.URL.createObjectURL(blob);
+
     const link = document.createElement("a");
     link.href = blobUrl;
-    link.setAttribute("download", filename);
+    link.download = finalFilename;
     document.body.appendChild(link);
     link.click();
 
-    link.remove();
+    document.body.removeChild(link);
     window.URL.revokeObjectURL(blobUrl);
   } catch (err) {
-    console.error(err);
+    console.error("Download error:", err);
     alert("Error downloading file");
   }
 };
+
 
 
   const fetchDocuments = useCallback( async () => {

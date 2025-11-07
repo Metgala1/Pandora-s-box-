@@ -99,36 +99,27 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
- const downloadFile = async (url, filename) => {
+const downloadFile = async (fileId, filename) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(`/api/files/${fileId}/download`);
 
-    if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
-
-    // Try to get the filename from the Content-Disposition header
-    const contentDisposition = response.headers.get('Content-Disposition');
-    let extractedFilename = filename;
-
-    if (contentDisposition && contentDisposition.includes('filename=')) {
-      const match = contentDisposition.match(/filename="(.+)"/);
-      if (match && match[1]) {
-        extractedFilename = match[1];
-      }
-    }
-
-    // If no filename is extracted, use the provided filename
-    const finalFilename = extractedFilename || filename;
+    if (!response.ok) throw new Error("Download failed");
 
     const blob = await response.blob();
-    const blobUrl = window.URL.createObjectURL(blob);
 
+    // Extract file type from response header
+    const contentType = response.headers.get("Content-Type");
+    const extension = contentType ? contentType.split("/")[1] : "";
+    const finalName = filename.includes(".") ? filename : `${filename}.${extension}`;
+
+    // Create a download link
+    const blobUrl = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = blobUrl;
-    link.download = finalFilename;
+    link.download = finalName;
     document.body.appendChild(link);
     link.click();
-
-    document.body.removeChild(link);
+    link.remove();
     window.URL.revokeObjectURL(blobUrl);
   } catch (err) {
     console.error("Download error:", err);

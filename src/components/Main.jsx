@@ -22,7 +22,9 @@ const Main = () => {
 
   return (
     <main className={styles.mainContainer}>
+      {!user &&
       <header className={styles.heroSection}>
+        
         <div className={styles.heroContent}>
           <h1>
             <FaBoxArchive /> Pandora's Box
@@ -31,7 +33,9 @@ const Main = () => {
             Your personal cloud storage — safe, simple, and always accessible.
           </p>
         </div>
+        
       </header>
+      }
 
       {!user ? (
         <section className={styles.authSection}>
@@ -40,12 +44,12 @@ const Main = () => {
           <div className={styles.authBtn}>
             <Link to={"signup"}>
             <p className={`${styles.btn} ${styles.signupBtn}`} href="/register">
-              <FaUserPlus /> Sign Up
+              <FaUserPlus /> <hr></hr>Sign Up
             </p>
             </Link>
             <Link to={"login"}>
             <p className={`${styles.btn} ${styles.loginBtn}`} href="/login">
-              <FaRightToBracket /> Login
+              <FaRightToBracket /><hr></hr> Login
             </p>
             </Link>
           </div>
@@ -74,6 +78,7 @@ const Main = () => {
 
       <section className={styles.features}>
         {!user && <h2>Why Pandora’s Box?</h2>}
+        {!user &&
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
             <FaLock className={styles.icon} size={32} />
@@ -96,6 +101,7 @@ const Main = () => {
             <p>Access your files on desktop, tablet, or mobile seamlessly.</p>
           </div>
         </div>
+        }
       </section>
 
       <section className={styles.cta}>

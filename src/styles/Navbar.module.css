@@ -81,6 +81,9 @@
     border: none;
     color: var(--muted);
     font-size: large;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
 }
 
 .loginBtn:hover{
@@ -102,6 +105,17 @@
     display: flex;
     gap: 1rem;
 }
+.registerBtn{
+    background: #22c55e;
+    color: rgb(250, 250, 250);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.loginBtn{
+    background: rgb(12, 173, 226);
+    color: rgb(250, 250, 250);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 
 @media (max-width: 768px) {
     .navBar{

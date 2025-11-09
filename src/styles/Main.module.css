@@ -24,6 +24,11 @@
   color: var(--text);
 }
 
+hr{
+  color: var(--text);
+  height: 20px;
+}
+
 /* ====== Hero ====== */
 .heroSection {
   text-align: center;

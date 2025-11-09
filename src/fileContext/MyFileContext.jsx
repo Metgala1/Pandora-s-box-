@@ -99,31 +99,53 @@ const uploadFile = async (formData, onProgress) => {
     }
   };
 
-const downloadFile = async (fileId, filename) => {
+const downloadFile = async (fileId, suggestedFilename = "download") => {
   try {
-    const response = await fetch(`/api/files/${fileId}/download`);
+    const response = await fetch(`/api/files/${fileId}/download`, {
+      method: "GET",
+      credentials: "include", // if auth is needed
+    });
 
-    if (!response.ok) throw new Error("Download failed");
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => "Unknown error");
+      throw new Error(`Download failed: ${response.status} ${errorText}`);
+    }
 
     const blob = await response.blob();
 
-    // Extract file type from response header
-    const contentType = response.headers.get("Content-Type");
-    const extension = contentType ? contentType.split("/")[1] : "";
-    const finalName = filename.includes(".") ? filename : `${filename}.${extension}`;
+    // Prefer filename from header (Content-Disposition), fallback to suggested
+    let filename = suggestedFilename;
+    const disposition = response.headers.get("content-disposition");
+    if (disposition) {
+      const match = disposition.match(/filename\*?=UTF-8''([^;]+)/i);
+      if (match?.[1]) {
+        filename = decodeURIComponent(match[1]);
+      }
+    }
 
-    // Create a download link
-    const blobUrl = window.URL.createObjectURL(blob);
+    // Fallback: use content-type extension if no filename has extension
+    if (!filename.includes(".")) {
+      const contentType = response.headers.get("content-type") || "";
+      const ext = contentType.split("/").pop().split(";")[0];
+      if (ext && ext !== "octet-stream") {
+        filename += `.${ext}`;
+      }
+    }
+
+    // Trigger download
+    const url = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = blobUrl;
-    link.download = finalName;
+    link.href = url;
+    link.download = filename;
     document.body.appendChild(link);
     link.click();
-    link.remove();
-    window.URL.revokeObjectURL(blobUrl);
+
+    // Cleanup
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   } catch (err) {
-    console.error("Download error:", err);
-    alert("Error downloading file");
+    console.error("Frontend download error:", err);
+    alert("Failed to download file. Please try again.");
   }
 };
 
